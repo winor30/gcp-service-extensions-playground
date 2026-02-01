@@ -1,0 +1,10 @@
+name: AUTHZ_EXT
+authority: authz.example.com
+loadBalancingScheme: EXTERNAL_MANAGED
+service: https://www.googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/backendServices/BS_CALLOUT
+forwardHeaders:
+  - authorization
+  - x-debug
+failOpen: false
+timeout: 0.2s
+wireFormat: EXT_AUTHZ_GRPC

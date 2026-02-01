@@ -1,0 +1,16 @@
+name: TRAFFIC_EXT
+loadBalancingScheme: EXTERNAL_MANAGED
+forwardingRules:
+  - projects/PROJECT_ID/regions/REGION/forwardingRules/FR_NAME
+extensionChains:
+  - name: TRAFFIC_EXT-chain
+    matchCondition:
+      celExpression: 'true'
+    extensions:
+      - name: TRAFFIC_EXT-callout
+        authority: extproc.example.com
+        service: projects/PROJECT_ID/regions/REGION/backendServices/BS_CALLOUT
+        timeout: 0.2s
+        failOpen: false
+        supportedEvents:
+          - REQUEST_HEADERS

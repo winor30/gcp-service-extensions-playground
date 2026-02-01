@@ -1,0 +1,15 @@
+name: AUTHZ_POLICY
+target:
+  loadBalancingScheme: EXTERNAL_MANAGED
+  resources:
+    - https://www.googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/forwardingRules/FR_NAME
+httpRules:
+  - to:
+      operations:
+        - paths:
+            - prefix: "/"
+action: CUSTOM
+customProvider:
+  authzExtension:
+    resources:
+      - projects/PROJECT_ID/locations/REGION/authzExtensions/AUTHZ_EXT
