@@ -1,0 +1,9 @@
+.git
+.gitignore
+.env
+.env.example
+.secrets/
+/docs/
+/deploy/
+**/*_test.go
+**/*.md

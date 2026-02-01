@@ -1,0 +1,13 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "-t"
+      - "${_IMAGE}"
+      - "-f"
+      - "deploy/docker/Dockerfile"
+      - "--build-arg"
+      - "TARGET=${_TARGET}"
+      - "."
+images:
+  - "${_IMAGE}"
