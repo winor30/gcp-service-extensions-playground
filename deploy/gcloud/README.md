@@ -17,7 +17,7 @@ openssl rsa -in ".secrets/private.pem" -pubout -out ".secrets/public.pem"
 3) Run the script
 
 ```bash
-./deploy/gcloud/phase1-authz.sh
+./deploy/gcloud/deploy-authz.sh
 ```
 
 > Required APIs: compute / run / cloudbuild / artifactregistry / networksecurity / networkservices
@@ -43,7 +43,7 @@ go run ./cmd/client
 2) Run the script
 
 ```bash
-./deploy/gcloud/phase2-proc.sh
+./deploy/gcloud/deploy-proc.sh
 ```
 
 3) Use the printed `LB IP` as the target URL (overwrite `TARGET_URL` or export it)
@@ -71,7 +71,7 @@ Expected: the response JSON from `origin` includes `x-uid: <JWT_SUB>` in headers
 4) Run the script
 
 ```bash
-./deploy/gcloud/phase3-wasm.sh
+./deploy/gcloud/deploy-wasm.sh
 ```
 
 5) Use the printed `LB IP` as the target URL (overwrite `TARGET_URL` or export it)
