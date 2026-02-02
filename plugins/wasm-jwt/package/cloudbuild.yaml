@@ -1,0 +1,22 @@
+substitutions:
+  _IMAGE: ""
+  _GO_VERSION: "1.24"
+
+steps:
+  - name: golang:${_GO_VERSION}
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        cd plugins/wasm-jwt
+        GOWORK=off GOOS=wasip1 GOARCH=wasm go build -buildmode=c-shared -trimpath -ldflags "-s -w" -buildvcs=false -o package/plugin.wasm .
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - --platform=wasm
+      - -t
+      - ${_IMAGE}
+      - plugins/wasm-jwt/package
+images:
+  - ${_IMAGE}
